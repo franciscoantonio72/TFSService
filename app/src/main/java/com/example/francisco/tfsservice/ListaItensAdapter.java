@@ -40,6 +40,7 @@ public class ListaItensAdapter extends ArrayAdapter<TFS> {
             viewHolder.txtResponsavel = (TextView) view.findViewById(R.id.text_view_responsavel);
             viewHolder.txtPontos = (TextView) view.findViewById(R.id.text_view_pontos);
             viewHolder.layout = (LinearLayout) view.findViewById(R.id.layoutItem);
+            viewHolder.barraLateral = (LinearLayout) view.findViewById(R.id.barraLateral);
 
             view.setTag(viewHolder);
         } else {
@@ -52,8 +53,10 @@ public class ListaItensAdapter extends ArrayAdapter<TFS> {
         viewHolder.txtPontos.setText(Integer.toString(tfs.getPontuacao()));
 
         if (tfs.getCssClass().equals("backlog-item-colors")) {
+            viewHolder.barraLateral.setBackgroundColor(Color.rgb(0, 156, 204));
             viewHolder.layout.setBackgroundColor(Color.rgb(214, 236, 242));
         } else {
+            viewHolder.barraLateral.setBackgroundColor(Color.rgb(204, 41, 61));
             viewHolder.layout.setBackgroundColor(Color.rgb(250, 234, 229));
         }
         return view;
@@ -65,5 +68,6 @@ public class ListaItensAdapter extends ArrayAdapter<TFS> {
         TextView txtResponsavel;
         TextView txtPontos;
         LinearLayout layout;
+        LinearLayout barraLateral;
     }
 }

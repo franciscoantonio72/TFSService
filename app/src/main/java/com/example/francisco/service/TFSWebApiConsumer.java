@@ -26,7 +26,7 @@ public class TFSWebApiConsumer {
         int length = 500;
         String contentAsString = "";
 
-        myurl += "?sprint=149";
+        myurl += "?sprint="+sprint;
 
         try {
             URL url = new URL(myurl);

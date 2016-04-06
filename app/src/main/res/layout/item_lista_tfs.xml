@@ -23,7 +23,7 @@
                 <LinearLayout
                     android:id="@+id/barraLateral"
                     android:layout_width="10dp"
-                    android:layout_height="67dp"
+                    android:layout_height="95dp"
                     android:orientation="vertical"
                     android:background="@color/colorPrimary"/>
                 <LinearLayout
