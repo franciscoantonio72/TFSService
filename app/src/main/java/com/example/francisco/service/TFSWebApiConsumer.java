@@ -21,29 +21,58 @@ public class TFSWebApiConsumer {
         SUCESSO, ERRO
     }
 
-    public String getTFS(String myurl, String sprint) throws IOException {
-        InputStream is = null;
-        int length = 500;
+    public String getTFS(String myurl, String sprint){
         String contentAsString = "";
 
         myurl += "?sprint="+sprint;
 
         try {
-            URL url = new URL(myurl);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setReadTimeout(10000 /* milliseconds */);
-            conn.setConnectTimeout(15000 /* milliseconds */);
-            conn.setRequestMethod("GET");
-            conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
-            conn.setUseCaches(false);
-            //conn.setDoInput(true);
-            conn.connect();
-            int response = conn.getResponseCode();
+            contentAsString = Conexao(myurl);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return contentAsString;
+    }
 
-            if (response == HttpURLConnection.HTTP_OK) {
-                contentAsString = readStream(conn.getInputStream());
-            } else {
-                //
+    public String getTFSById(String myurl, String id){
+        String contentAsString = "";
+
+        myurl += "?id="+id;
+
+        try {
+            contentAsString = Conexao(myurl);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return contentAsString;
+    }
+
+    private String Conexao(String myurl) throws IOException{
+        InputStream is = null;
+        int length = 500;
+        String contentAsString = "";
+
+        try {
+            try {
+                URL url = new URL(myurl);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setReadTimeout(10000 /* milliseconds */);
+                conn.setConnectTimeout(15000 /* milliseconds */);
+                conn.setRequestMethod("GET");
+                conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
+                conn.setUseCaches(false);
+                //conn.setDoInput(true);
+                conn.connect();
+                int response = conn.getResponseCode();
+
+                if (response == HttpURLConnection.HTTP_OK) {
+                    contentAsString = readStream(conn.getInputStream());
+                } else {
+                    //
+                }
+            }catch (Exception ex) {
+                ex.printStackTrace();
             }
 
             return contentAsString;

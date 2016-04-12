@@ -27,6 +27,8 @@
         </activity>
         <activity android:name=".ListaItens" >
         </activity>
+        <activity android:name=".ItemSelectActivity" >
+        </activity>
     </application>
 
 </manifest>

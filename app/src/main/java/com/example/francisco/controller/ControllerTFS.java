@@ -31,4 +31,15 @@ public class ControllerTFS {
         }
         return listTfs;
     }
+
+    public TFS retornarObjetoTfs(String json) {
+        TFS tfs = null;
+        try {
+            Gson gson = new Gson();
+            tfs = gson.fromJson(json, TFS.class);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return tfs;
+    }
 }

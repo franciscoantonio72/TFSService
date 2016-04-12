@@ -22,6 +22,7 @@ public class SelecaoActivity extends AppCompatActivity implements OnClickListene
     Button btnEmTeste;
     Button btnEmAceitacao;
     Button btnConcluido;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +48,9 @@ public class SelecaoActivity extends AppCompatActivity implements OnClickListene
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(this, ListaItens.class);
+        listaTFSporStatus = new ArrayList<TFS>();
         switch (v.getId()) {
             case R.id.btnAguardando :
-                listaTFSporStatus = new ArrayList<TFS>();
                 for (TFS item: listaTFS) {
                     if (item.getStatus().equals("New") && (item.getResponsavel().equals("Aguardando"))){
                         listaTFSporStatus.add(item);
@@ -59,7 +60,6 @@ public class SelecaoActivity extends AppCompatActivity implements OnClickListene
                 startActivity(intent);
                 break;
             case R.id.btnEmDesenvolvimento:
-                listaTFSporStatus = new ArrayList<TFS>();
                 for (TFS item: listaTFS) {
                     if (item.getStatus().equals("New") && (!item.getResponsavel().equals("Aguardando"))){
                         listaTFSporStatus.add(item);
@@ -69,7 +69,6 @@ public class SelecaoActivity extends AppCompatActivity implements OnClickListene
                 startActivity(intent);
                 break;
             case R.id.btnEmRevisao:
-                listaTFSporStatus = new ArrayList<TFS>();
                 for (TFS item: listaTFS) {
                     if (item.getStatus().equals("Committed") && (item.getResponsavel().equals("Revisao_Codigo"))){
                         listaTFSporStatus.add(item);
@@ -79,28 +78,31 @@ public class SelecaoActivity extends AppCompatActivity implements OnClickListene
                 startActivity(intent);
                 break;
             case R.id.btnEmTeste:
-                listaTFSporStatus = new ArrayList<TFS>();
                 for (TFS item: listaTFS) {
                     if (item.getStatus().equals("Committed") && (!item.getResponsavel().equals("Revisao_Codigo"))){
                         listaTFSporStatus.add(item);
                     }
                 }
+                intent.putParcelableArrayListExtra("listaTFS", (ArrayList<? extends Parcelable>) listaTFSporStatus);
+                startActivity(intent);
                 break;
             case R.id.btnEmAceitacao:
-                listaTFSporStatus = new ArrayList<TFS>();
                 for (TFS item: listaTFS) {
                     if (item.getStatus().equals("Approved") && (item.getResponsavel().equals("Aceitação"))){
                         listaTFSporStatus.add(item);
                     }
                 }
+                intent.putParcelableArrayListExtra("listaTFS", (ArrayList<? extends Parcelable>) listaTFSporStatus);
+                startActivity(intent);
                 break;
             case R.id.btnConcluido:
-                listaTFSporStatus = new ArrayList<TFS>();
                 for (TFS item: listaTFS) {
                     if (item.getStatus().equals("Done")){
                         listaTFSporStatus.add(item);
                     }
                 }
+                intent.putParcelableArrayListExtra("listaTFS", (ArrayList<? extends Parcelable>) listaTFSporStatus);
+                startActivity(intent);
                 break;
             default:
                 break;
