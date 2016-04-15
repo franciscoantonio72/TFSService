@@ -52,7 +52,8 @@ public class ListaItensAdapter extends ArrayAdapter<TFS> {
         viewHolder.txtResponsavel.setText(tfs.getResponsavel());
         viewHolder.txtPontos.setText(Integer.toString(tfs.getPontuacao()));
 
-        if (tfs.getCssClass().equals("backlog-item-colors")) {
+        //if (tfs.getCssClass().equals("backlog-item-colors")) {
+        if (!tfs.getTitulo().contains("[NP]")) {
             viewHolder.barraLateral.setBackgroundColor(Color.rgb(0, 156, 204));
             viewHolder.layout.setBackgroundColor(Color.rgb(214, 236, 242));
         } else {

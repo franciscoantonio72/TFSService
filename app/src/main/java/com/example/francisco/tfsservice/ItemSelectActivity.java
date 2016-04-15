@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.text.Spanned;
 import android.widget.TextView;
 
 import com.example.francisco.controller.ControllerTFS;
@@ -23,9 +24,8 @@ public class ItemSelectActivity extends AppCompatActivity {
     TextView txtResponsavel;
     TextView txtStatus;
     TextView txtPontuacao;
-    TextView txtSprint;
     private ProgressDialog mProgressDialog;
-    private static String URL = "http://tec-soft.servehttp.com:8889/tfs/ById";
+    private static String URL = "http://tec-soft.servehttp.com:8889/api/tfs/";
     private TFS tfsItem;
 
     @Override
@@ -56,7 +56,7 @@ public class ItemSelectActivity extends AppCompatActivity {
             String sprint = params[0];
             String resposta = "";
             try {
-                resposta = new TFSWebApiConsumer().getTFSById(URL, sprint);
+                resposta = new TFSWebApiConsumer().postTFSById(URL, sprint);
             }
             catch (Exception e){
                 e.printStackTrace();
@@ -80,15 +80,15 @@ public class ItemSelectActivity extends AppCompatActivity {
         txtTitulo = (TextView) findViewById(R.id.txtTitulo);
         txtTitulo.setText(tfsItem.getTitulo());
         txtDescricao = (TextView) findViewById(R.id.txtDescricao);
-        txtDescricao.setText(Html.fromHtml(tfsItem.getDescricao().toString()));
+        String descricao = tfsItem.getDescricao().toString();
+        Spanned htmlDescricao = Html.fromHtml(descricao);
+        txtDescricao.setText(htmlDescricao);
         txtResponsavel = (TextView) findViewById(R.id.txtResponsavel);
         txtResponsavel.setText(tfsItem.getResponsavel());
         txtStatus = (TextView) findViewById(R.id.txtStatus);
         txtStatus.setText(tfsItem.getStatus());
         txtPontuacao = (TextView) findViewById(R.id.txtPontuacao);
         txtPontuacao.setText(String.valueOf(tfsItem.getPontuacao()));
-        txtSprint = (TextView) findViewById(R.id.txtSprint);
-        txtSprint.setText(tfsItem.getSprint());
     }
 
     private void createDialog(){

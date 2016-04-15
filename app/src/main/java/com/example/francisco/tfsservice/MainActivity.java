@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText edtSprint;
     private Button btnConsultar;
     private ProgressDialog mProgressDialog;
-    private static String URL = "http://tec-soft.servehttp.com:8889/tfs";
+    private static String URL = "http://tec-soft.servehttp.com:8889/api/tfs";
 
 
     @Override

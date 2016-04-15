@@ -21,26 +21,29 @@ public class TFSWebApiConsumer {
         SUCESSO, ERRO
     }
 
+    private static final String POST = "post";
+    private static final String GET = "get";
+
     public String getTFS(String myurl, String sprint){
         String contentAsString = "";
 
         myurl += "?sprint="+sprint;
 
         try {
-            contentAsString = Conexao(myurl);
+            contentAsString = Conexao(myurl, GET);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return contentAsString;
     }
 
-    public String getTFSById(String myurl, String id){
+    public String postTFSById(String myurl, String id){
         String contentAsString = "";
 
-        myurl += "?id="+id;
+        myurl += id;
 
         try {
-            contentAsString = Conexao(myurl);
+            contentAsString = Conexao(myurl, POST);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -48,7 +51,7 @@ public class TFSWebApiConsumer {
         return contentAsString;
     }
 
-    private String Conexao(String myurl) throws IOException{
+    private String Conexao(String myurl, String postGet) throws IOException{
         InputStream is = null;
         int length = 500;
         String contentAsString = "";
@@ -57,12 +60,18 @@ public class TFSWebApiConsumer {
             try {
                 URL url = new URL(myurl);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                conn.setReadTimeout(10000 /* milliseconds */);
-                conn.setConnectTimeout(15000 /* milliseconds */);
-                conn.setRequestMethod("GET");
-                conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
-                conn.setUseCaches(false);
-                //conn.setDoInput(true);
+                if (postGet.equals(POST)) {
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("ACCEPT-LANGUAGE", "en-US,en;0.5");
+                    conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
+                    conn.setDoOutput(true);
+                } else {
+                    conn.setReadTimeout(10000 /* milliseconds */);
+                    conn.setConnectTimeout(15000 /* milliseconds */);
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
+                    conn.setUseCaches(false);
+                }
                 conn.connect();
                 int response = conn.getResponseCode();
 
