@@ -19,8 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Sprint"
-            android:text="150">
+            android:hint="Sprint">
 
             <requestFocus />
         </EditText>

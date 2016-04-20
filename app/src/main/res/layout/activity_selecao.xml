@@ -1,61 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="horizontal"
     tools:context="com.example.francisco.tfsservice.SelecaoActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp"
         android:orientation="vertical">
-        <Button
-            android:id="@+id/btnAguardando"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="3dp"
-            android:text="Aguardando"
-            android:textColor="@android:color/white" />
-        <Button
-            android:id="@+id/btnEmDesenvolvimento"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="3dp"
-            android:text="Em Desenvolvimento"
-            android:textColor="@android:color/white" />
-        <Button
-            android:id="@+id/btnEmRevisao"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="3dp"
-            android:text="Em Revisão"
-            android:textColor="@android:color/white" />
-        <Button
-            android:id="@+id/btnEmTeste"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="3dp"
-            android:text="Em Teste"
-            android:textColor="@android:color/white" />
-        <Button
-            android:id="@+id/btnEmAceitacao"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="3dp"
-            android:text="Em Aceitação"
-            android:textColor="@android:color/white" />
-        <Button
-            android:id="@+id/btnConcluido"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_margin="3dp"
-            android:text="Concluido"
-            android:textColor="@android:color/white" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:paddingBottom="20dp"
+            android:orientation="vertical"
+            android:background="@color/colorSelecao">
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtTFSOcomon"
+                android:layout_gravity="center_horizontal"
+                android:ems="10"
+                android:hint="Nº TFS/Ocomon"/>
+
+            <Button
+                android:id="@+id/btnBuscar"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Buscar"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="20dp"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/btnAguardando"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="3dp"
+                android:text="Aguardando"
+                android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/btnEmDesenvolvimento"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="3dp"
+                android:text="Em Desenvolvimento"
+                android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/btnEmRevisao"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="3dp"
+                android:text="Em Revisão"
+                android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/btnEmTeste"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="3dp"
+                android:text="Em Teste"
+                android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/btnEmAceitacao"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="3dp"
+                android:text="Em Aceitação"
+                android:textColor="@android:color/white" />
+            <Button
+                android:id="@+id/btnConcluido"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="3dp"
+                android:text="Concluido"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

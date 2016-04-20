@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.francisco.model.TFS;
 
@@ -22,6 +23,8 @@ public class SelecaoActivity extends AppCompatActivity implements OnClickListene
     Button btnEmTeste;
     Button btnEmAceitacao;
     Button btnConcluido;
+    Button btnBuscar;
+    EditText edtBuscar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,9 @@ public class SelecaoActivity extends AppCompatActivity implements OnClickListene
         btnEmAceitacao.setOnClickListener(this);
         btnConcluido = (Button) findViewById(R.id.btnConcluido);
         btnConcluido.setOnClickListener(this);
+        edtBuscar = (EditText) findViewById(R.id.edtTFSOcomon);
+        btnBuscar = (Button) findViewById(R.id.btnBuscar);
+        btnBuscar.setOnClickListener(this);
     }
 
 
@@ -50,6 +56,11 @@ public class SelecaoActivity extends AppCompatActivity implements OnClickListene
         Intent intent = new Intent(this, ListaItens.class);
         listaTFSporStatus = new ArrayList<TFS>();
         switch (v.getId()) {
+            case R.id.btnBuscar:
+                Intent intentDetalhe = new Intent(this, ItemSelectActivity.class);
+                intentDetalhe.putExtra("id", Integer.parseInt(edtBuscar.getText().toString()));
+                startActivity(intentDetalhe);
+                break;
             case R.id.btnAguardando :
                 for (TFS item: listaTFS) {
                     if (item.getStatus().equals("New") && (item.getResponsavel().equals("Aguardando"))){
