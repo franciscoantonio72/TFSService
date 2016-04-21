@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
 import android.text.Spanned;
@@ -33,6 +34,8 @@ public class ItemSelectActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_select);
 
+        AdicionaIconeBarra();
+
         Bundle bundle = getIntent().getExtras();
         int id = bundle.getInt("id");
 
@@ -42,6 +45,14 @@ public class ItemSelectActivity extends AppCompatActivity {
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    private void AdicionaIconeBarra() {
+        ActionBar actionBar = getSupportActionBar(); // or getActionBar();
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        actionBar.show();
     }
 
     private class ConsultarTFS extends AsyncTask<String, Void, String>{
@@ -76,7 +87,7 @@ public class ItemSelectActivity extends AppCompatActivity {
 
     private void objectToView(TFS tfsItem) {
         txtId = (TextView) findViewById(R.id.txtId);
-        txtId.setText(String.valueOf(tfsItem.getId()));
+        txtId.setText("Id: " + String.valueOf(tfsItem.getId()));
         txtTitulo = (TextView) findViewById(R.id.txtTitulo);
         txtTitulo.setText(tfsItem.getTitulo());
         txtDescricao = (TextView) findViewById(R.id.txtDescricao);
@@ -84,11 +95,11 @@ public class ItemSelectActivity extends AppCompatActivity {
         Spanned htmlDescricao = Html.fromHtml(descricao);
         txtDescricao.setText(htmlDescricao);
         txtResponsavel = (TextView) findViewById(R.id.txtResponsavel);
-        txtResponsavel.setText(tfsItem.getResponsavel());
+        txtResponsavel.setText("Responsavel: " + tfsItem.getResponsavel());
         txtStatus = (TextView) findViewById(R.id.txtStatus);
-        txtStatus.setText(tfsItem.getStatus());
+        txtStatus.setText("Status: " + tfsItem.getStatus());
         txtPontuacao = (TextView) findViewById(R.id.txtPontuacao);
-        txtPontuacao.setText(String.valueOf(tfsItem.getPontuacao()));
+        txtPontuacao.setText("Pontuação: " + String.valueOf(tfsItem.getPontuacao()));
     }
 
     private void createDialog(){

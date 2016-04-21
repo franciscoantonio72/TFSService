@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -30,9 +31,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intSplash = new Intent(this, SplashActivity.class);
+        startActivity(intSplash);
+
+        AdicionaIconeBarra();
+
         edtSprint = (EditText) findViewById(R.id.edtSprint);
         btnConsultar = (Button) findViewById(R.id.btnConectar);
         btnConsultar.setOnClickListener(this);
+    }
+
+    private void AdicionaIconeBarra() {
+        ActionBar actionBar = getSupportActionBar(); // or getActionBar();
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        actionBar.show();
     }
 
     @Override

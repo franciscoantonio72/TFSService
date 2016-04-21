@@ -3,6 +3,7 @@ package com.example.francisco.tfsservice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,6 +31,8 @@ public class SelecaoActivity extends AppCompatActivity implements OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selecao);
+
+        AdicionaIconeBarra();
 
         listaTFS = getIntent().getParcelableArrayListExtra("TFS");
 
@@ -118,5 +121,13 @@ public class SelecaoActivity extends AppCompatActivity implements OnClickListene
             default:
                 break;
         }
+    }
+
+    private void AdicionaIconeBarra() {
+        ActionBar actionBar = getSupportActionBar(); // or getActionBar();
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setLogo(R.mipmap.ic_launcher);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        actionBar.show();
     }
 }
