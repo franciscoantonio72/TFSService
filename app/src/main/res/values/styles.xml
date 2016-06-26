@@ -8,4 +8,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Theme.MyThemeBottom" parent="AppTheme">
+        <!-- colorPrimary is used for the default action bar background -->
+        <item name="colorPrimary">@android:color/white</item>
+    </style>
+
 </resources>

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,8 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intSplash = new Intent(this, SplashActivity.class);
-        startActivity(intSplash);
+  //      Intent intSplash = new Intent(this, SplashActivity.class);
+  //      startActivity(intSplash);
 
         AdicionaIconeBarra();
 
@@ -110,4 +112,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return !edtSprint.getText().toString().equals("");
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.config:
+                return true;
+        }
+
+        return(super.onOptionsItemSelected(item));
+    }
 }

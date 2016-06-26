@@ -17,6 +17,6 @@
             android:layout_marginLeft="100dp"
             android:layout_marginRight="100dp"
             android:adjustViewBounds="true"
-            android:src="@drawable/logo" />
+            android:src="@drawable/ic_launcher" />
     </LinearLayout>
 </LinearLayout>
